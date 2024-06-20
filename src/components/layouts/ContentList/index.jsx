@@ -4,7 +4,7 @@ import CardAnime from "@/components/fragments/CardAnime";
 const ContentList = async ({ api }) => {
   return (
     <>
-      <div className="grid sm:grid-cols-3 grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 h-32">
+      <div className="grid sm:grid-cols-3 grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 h-32 mb-4">
         {api.data.map((item) => (
           <CardAnime
             key={item.mal_id}

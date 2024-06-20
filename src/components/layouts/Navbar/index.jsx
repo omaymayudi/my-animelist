@@ -15,20 +15,25 @@ const Navbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const keyword = searchRef.current.value;
-    router.push(`/search/${keyword}`);
+
+    if (keyword.length > 0) {
+      router.push(`/search/${keyword}`);
+    } else {
+      null;
+    }
   };
 
   return (
-    <header className="bg-slate-700 py-4">
+    <header className="bg-yellow-500 py-4">
       <BoxContent>
         <div className="grid grid-cols-1 md:grid-cols-2 justify-between items-center gap-2">
           <Link href="/" className="">
-            <Text1 text="MyAnimeList" color="text-white" />
+            <Text1 text="MyAnimeList" />
           </Link>
           <div>
             <div className="relative w-full">
               <input
-                type="search"
+                type="=text"
                 id="search-dropdown"
                 className="rounded-lg block p-2 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500  "
                 placeholder="Search Anime..."
@@ -36,6 +41,7 @@ const Navbar = () => {
                 ref={searchRef}
                 onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}
               />
+
               <button
                 type="submit"
                 onClick={handleSearch}
