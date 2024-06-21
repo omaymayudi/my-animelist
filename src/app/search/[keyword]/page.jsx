@@ -3,12 +3,13 @@ import axios from "axios";
 import BoxContent from "@/components/elements/BoxContent";
 
 import ContentList from "@/components/layouts/ContentList";
-import Header from "@/components/layouts/ContentList/Header";
+
 const SearchPage = async ({ params }) => {
   const { keyword } = params;
+  const decodeKeyword = decodeURIComponent(keyword);
 
   const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${keyword}`
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${decodeKeyword}`
   );
 
   const searchAnime = response.data;
@@ -24,7 +25,7 @@ const SearchPage = async ({ params }) => {
           <div className="justify-center">
             <div>
               <h3 className="text-sm truncate  md:text-lg font-bold md:py-4 py-2 text-color-primary">
-                {`Search results for "${keyword}"`}
+                {`Search results for "${decodeKeyword}"`}
               </h3>
               <ContentList api={searchAnime} />
             </div>
