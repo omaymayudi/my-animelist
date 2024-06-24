@@ -17,7 +17,7 @@ export default async function Home() {
           <div>
             <Header
               title={"Top Anime"}
-              linkHref={"/populer"}
+              linkHref={"/populer/1"}
               linkTittle={"View all"}
             />
             <ContentList api={topAnime} />

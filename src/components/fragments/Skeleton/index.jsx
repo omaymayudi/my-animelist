@@ -16,9 +16,6 @@ const Sekeleton = () => {
           <CradSkeleton />
           <CradSkeleton />
         </div>
-        <h1 className="text-lg md:text-2xl text-center md:py-6 py-2">
-          Sekeleton
-        </h1>
       </BoxContent>
     </div>
   );

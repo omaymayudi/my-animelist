@@ -5,10 +5,10 @@ import BoxContent from "@/components/elements/BoxContent";
 import ContentList from "@/components/layouts/ContentList";
 import React, { useEffect, useState } from "react";
 import { Pagination } from "@/components/elements/Pagination";
-import Sekeleton from "@/components/fragments/Skeleton";
 
 const Page = () => {
   const [page, setPage] = useState(1);
+
   const [topAnime, setTopAnime] = useState([]);
 
   const fetchTopAnime = async () => {
@@ -16,6 +16,7 @@ const Page = () => {
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?page=${page}`
     );
     const Animedata = response.data;
+
     setTopAnime(Animedata);
   };
 
@@ -23,6 +24,15 @@ const Page = () => {
     fetchTopAnime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
+
+  const hendleLoadMore = async () => {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?page=${page + 1}`
+    );
+    const Animedata = await response.data;
+    setTopAnime([...topAnime, ...Animedata]);
+    setPage(page + 1);
+  };
 
   return (
     <BoxContent>
@@ -35,11 +45,27 @@ const Page = () => {
         <ContentList api={topAnime} />
       </div>
 
-      <div className="py-4">
-        <Pagination />
-      </div>
+      <button onClick={hendleLoadMore} className="py-4 ">
+        Load more
+      </button>
     </BoxContent>
   );
 };
 
 export default Page;
+
+//  const [page, setPage] = useState(1);
+//  const [topAnime, setTopAnime] = useState([]);
+
+//  const fetchTopAnime = async () => {
+//    const response = await axios.get(
+//      `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?page=${page}`
+//    );
+//    const Animedata = response.data;
+//    setTopAnime(Animedata);
+//  };
+
+//  useEffect(() => {
+//    fetchTopAnime();
+//    // eslint-disable-next-line react-hooks/exhaustive-deps
+//  }, [page]);
