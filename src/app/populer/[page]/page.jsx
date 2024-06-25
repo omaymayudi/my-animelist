@@ -4,15 +4,15 @@ import BoxContent from "@/components/elements/BoxContent";
 import ContentList from "@/components/layouts/ContentList";
 import React from "react";
 import { Pagination } from "@/components/elements/Pagination";
+import { getAnimeResponse } from "@/app/lib/api-libs";
 
 const page = async ({ params }) => {
   const { page } = params;
 
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?page=${page}`
-  );
-
-  const topAnime = response.data;
+  const topAnime = await getAnimeResponse({
+    resource: "top/anime",
+    query: `page=${page}`,
+  });
 
   return (
     <div>

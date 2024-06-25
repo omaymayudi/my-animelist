@@ -3,16 +3,16 @@ import axios from "axios";
 import BoxContent from "@/components/elements/BoxContent";
 
 import ContentList from "@/components/layouts/ContentList";
+import { getAnimeResponse } from "@/app/lib/api-libs";
 
 const SearchPage = async ({ params }) => {
   const { keyword } = params;
   const decodeKeyword = decodeURIComponent(keyword);
 
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${decodeKeyword}`
-  );
-
-  const searchAnime = response.data;
+  const searchAnime = await getAnimeResponse({
+    resource: "anime",
+    query: `q=${decodeKeyword}`,
+  });
 
   return (
     <>
