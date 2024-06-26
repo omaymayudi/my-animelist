@@ -4,7 +4,7 @@ import BoxContent from "@/components/elements/BoxContent";
 import ContentList from "@/components/layouts/ContentList";
 import React from "react";
 import { Pagination } from "@/components/elements/Pagination";
-import { getAnimeResponse } from "@/app/lib/api-libs";
+import { getAnimeResponse } from "@/lib/api-libs";
 
 const page = async ({ params }) => {
   const { page } = params;

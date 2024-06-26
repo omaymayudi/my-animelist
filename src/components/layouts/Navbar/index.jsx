@@ -16,10 +16,10 @@ const Navbar = () => {
     e.preventDefault();
     const keyword = searchRef.current.value;
 
-    if (keyword.length > 0) {
-      router.push(`/search/${keyword}`);
-    } else {
+    if (!keyword || keyword.trim() === "") {
       null;
+    } else {
+      router.push(`/search/${keyword}`);
     }
   };
 

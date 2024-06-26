@@ -3,7 +3,7 @@ import axios from "axios";
 import BoxContent from "@/components/elements/BoxContent";
 
 import ContentList from "@/components/layouts/ContentList";
-import { getAnimeResponse } from "@/app/lib/api-libs";
+import { getAnimeResponse } from "@/lib/api-libs";
 
 const SearchPage = async ({ params }) => {
   const { keyword } = params;

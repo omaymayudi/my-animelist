@@ -1,5 +1,5 @@
 import React from "react";
-import { getAnimeResponse } from "@/app/lib/api-libs";
+import { getAnimeResponse } from "@/lib/api-libs";
 import BoxContent from "@/components/elements/BoxContent";
 import Title from "@/components/elements/Title";
 import Image from "next/image";
